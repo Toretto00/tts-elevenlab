@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech to Text | Audio Transcription</title>
+    <meta name="description" content="Upload audio files and transcribe them to text with our simple, minimalist tool.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <main class="container">
+        <!-- Header with icon -->
+        <div class="header">
+            <div class="icon-group">
+                <svg class="icon-waveform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3v18"></path>
+                    <path d="M8 8v8"></path>
+                    <path d="M16 8v8"></path>
+                    <path d="M4 11v2"></path>
+                    <path d="M20 11v2"></path>
+                </svg>
+                <span class="icon-arrow">›</span>
+                <svg class="icon-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="9" x2="20" y2="9"></line>
+                    <line x1="4" y1="15" x2="16" y2="15"></line>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Description text -->
+        <p class="description">
+            Upload audio files (up to 10), then click the button to transcribe
+        </p>
+
+        <!-- Upload section -->
+        <div class="upload-section">
+            <input 
+                type="file" 
+                id="audioInput" 
+                accept="audio/*" 
+                multiple
+                hidden
+            >
+            <button id="uploadBtn" class="btn btn-primary">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                </svg>
+                Upload Files
+            </button>
+        </div>
+
+        <!-- Selected files list -->
+        <div id="fileList" class="file-list hidden"></div>
+
+        <!-- Transcribe button -->
+        <button id="transcribeBtn" class="btn btn-secondary hidden">
+            Transcribe All
+        </button>
+
+        <!-- Processing status -->
+        <div id="processingStatus" class="processing-status hidden">
+            <div class="loader"></div>
+            <p id="statusText" class="status-text">Processing...</p>
+        </div>
+
+        <!-- Results section (collapsible items) -->
+        <div id="resultsContainer" class="results-container hidden"></div>
+
+        <!-- Error message -->
+        <div id="errorMessage" class="error-message hidden"></div>
+    </main>
+
+    <!-- lamejs for MP3 encoding/compression -->
+    <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
+    <!-- docx.js for Word document generation -->
+    <script src="https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
